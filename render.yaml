@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: scsi-ai-server
+    env: python
+    plan: free
+    rootDir: ai_server
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
+    autoDeploy: true
