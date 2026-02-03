@@ -365,6 +365,7 @@ class CaseDetailPage extends ConsumerWidget {
 
   Future<void> _exportBundle(BuildContext context, WidgetRef ref) async {
     final exportService = EvidenceExportService(
+      caseRepository: ref.read(caseRepositoryProvider),
       evidenceRepository: ref.read(evidenceRepositoryProvider),
       detectionRepository: ref.read(detectionRepositoryProvider),
       timelineRepository: ref.read(timelineRepositoryProvider),

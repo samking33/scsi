@@ -8,6 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:scsi/core/domain/value_objects/ids.dart';
 import 'package:scsi/features/ai_detection/domain/entities/detection.dart';
 import 'package:scsi/features/ai_detection/domain/repositories/detection_repository.dart';
+import 'package:scsi/features/case_management/domain/entities/case_file.dart';
+import 'package:scsi/features/case_management/domain/repositories/case_repository.dart';
 import 'package:scsi/features/chain_of_custody/domain/entities/audit_event.dart';
 import 'package:scsi/features/chain_of_custody/domain/repositories/audit_repository.dart';
 import 'package:scsi/features/evidence/domain/entities/evidence_item.dart';
@@ -19,17 +21,20 @@ import 'package:scsi/features/timeline/domain/repositories/timeline_repository.d
 
 class EvidenceExportService {
   EvidenceExportService({
+    required CaseRepository caseRepository,
     required EvidenceRepository evidenceRepository,
     required DetectionRepository detectionRepository,
     required TimelineRepository timelineRepository,
     required AuditRepository auditRepository,
     required ReportRepository reportRepository,
   })  : _evidenceRepository = evidenceRepository,
+        _caseRepository = caseRepository,
         _detectionRepository = detectionRepository,
         _timelineRepository = timelineRepository,
         _auditRepository = auditRepository,
         _reportRepository = reportRepository;
 
+  final CaseRepository _caseRepository;
   final EvidenceRepository _evidenceRepository;
   final DetectionRepository _detectionRepository;
   final TimelineRepository _timelineRepository;
@@ -37,6 +42,7 @@ class EvidenceExportService {
   final ReportRepository _reportRepository;
 
   Future<File> exportCaseBundle(String caseId) async {
+    final caseFile = await _caseRepository.getCase(CaseId(caseId));
     final evidence = await _evidenceRepository.listEvidence(CaseId(caseId));
     final detections = await _detectionRepository.listDetections(CaseId(caseId));
     final timeline = await _timelineRepository.listEntries(CaseId(caseId));
@@ -46,6 +52,7 @@ class EvidenceExportService {
     final manifest = {
       'caseId': caseId,
       'generatedAt': DateTime.now().toUtc().toIso8601String(),
+      'case': caseFile == null ? null : _serializeCase(caseFile),
       'evidence': evidence.map(_serializeEvidence).toList(),
       'detections': detections.map(_serializeDetection).toList(),
       'timeline': timeline.map(_serializeTimeline).toList(),
@@ -153,6 +160,38 @@ class EvidenceExportService {
       'generatedAt': report.generatedAt.utc.toIso8601String(),
       'filePath': report.pdfFile.path,
       'sha256': report.pdfFile.sha256.hex,
+    };
+  }
+
+  Map<String, Object?> _serializeCase(CaseFile caseFile) {
+    return {
+      'id': caseFile.id.value,
+      'title': caseFile.title,
+      'description': caseFile.description,
+      'jurisdiction': caseFile.jurisdiction,
+      'createdAt': caseFile.createdAt.utc.toIso8601String(),
+      'leadOfficer': {
+        'id': caseFile.leadOfficer.id.value,
+        'name': caseFile.leadOfficer.fullName,
+        'badge': caseFile.leadOfficer.badgeNumber,
+        'agency': caseFile.leadOfficer.agency,
+        'rank': caseFile.leadOfficer.rank,
+      },
+      'device': {
+        'id': caseFile.createdOnDevice.deviceId.value,
+        'manufacturer': caseFile.createdOnDevice.manufacturer,
+        'model': caseFile.createdOnDevice.model,
+        'osVersion': caseFile.createdOnDevice.osVersion,
+        'appVersion': caseFile.createdOnDevice.appVersion,
+      },
+      'initialLocation': {
+        'lat': caseFile.initialLocation.latitude,
+        'lng': caseFile.initialLocation.longitude,
+        'altitude': caseFile.initialLocation.altitudeMeters,
+        'accuracy': caseFile.initialLocation.accuracyMeters,
+        'heading': caseFile.initialLocation.headingDegrees,
+        'speed': caseFile.initialLocation.speedMetersPerSecond,
+      },
     };
   }
 }
