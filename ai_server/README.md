@@ -57,4 +57,5 @@ After deploy, set the app AI base URL to your Render service URL.
 ## Render Free Plan Notes
 - The free plan has tight memory limits. The blueprint sets `YOLO_MODEL=yolov8s.pt`
   and CPU-only torch to avoid CUDA packages and OOM.
+- The blueprint pins Python 3.11 for wider torch wheel support.
 - If you want the larger model, upgrade the plan and set `YOLO_MODEL=yolov8x.pt`.
