@@ -1,7 +1,8 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from io import BytesIO
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import os
 import torch
 from ultralytics import YOLO
@@ -39,15 +40,13 @@ def map_category(label: str) -> str:
     return "unknown"
 
 
-@app.post("/detect")
-async def detect(image: UploadFile = File(...)):
-    payload = await image.read()
-    img = Image.open(BytesIO(payload)).convert("RGB")
-    width, height = img.size
+def run_detection(image: Image.Image):
+    results = model(image, verbose=False, device="cpu")[0]
+    return results
 
-    results = model(img, verbose=False, device="cpu")[0]
+
+def serialize_detections(results, width: int, height: int):
     detections = []
-
     for box, cls_idx, conf in zip(
         results.boxes.xyxy.tolist(),
         results.boxes.cls.tolist(),
@@ -69,5 +68,40 @@ async def detect(image: UploadFile = File(...)):
                 "normalized": True,
             }
         )
+    return detections
 
+
+@app.post("/detect")
+async def detect(image: UploadFile = File(...)):
+    payload = await image.read()
+    img = Image.open(BytesIO(payload)).convert("RGB")
+    width, height = img.size
+
+    results = run_detection(img)
+    detections = serialize_detections(results, width, height)
     return {"detections": detections}
+
+
+@app.post("/detect-annotated")
+async def detect_annotated(image: UploadFile = File(...)):
+    payload = await image.read()
+    img = Image.open(BytesIO(payload)).convert("RGB")
+    width, height = img.size
+
+    results = run_detection(img)
+    draw = ImageDraw.Draw(img)
+
+    for box, cls_idx, conf in zip(
+        results.boxes.xyxy.tolist(),
+        results.boxes.cls.tolist(),
+        results.boxes.conf.tolist(),
+    ):
+        x1, y1, x2, y2 = box
+        label = results.names[int(cls_idx)]
+        text = f"{label} {conf:.2f}"
+        draw.rectangle([x1, y1, x2, y2], outline=(255, 0, 0), width=3)
+        draw.text((x1 + 4, max(0, y1 - 14)), text, fill=(255, 0, 0))
+
+    out = BytesIO()
+    img.save(out, format="JPEG", quality=90)
+    return Response(content=out.getvalue(), media_type="image/jpeg")
