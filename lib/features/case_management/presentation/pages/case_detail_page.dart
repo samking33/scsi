@@ -10,17 +10,22 @@ import 'package:share_plus/share_plus.dart';
 import 'package:scsi/app/providers.dart';
 import 'package:scsi/core/data/scsi_database.dart';
 import 'package:scsi/core/domain/enums/audit_action.dart';
+import 'package:scsi/core/domain/enums/ai_category.dart';
 import 'package:scsi/core/domain/enums/evidence_type.dart';
 import 'package:scsi/core/domain/value_objects/ids.dart';
 import 'package:scsi/core/domain/value_objects/timestamp.dart';
 import 'package:scsi/core/domain/value_objects/hash.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map_tile_caching/flutter_map_tile_caching.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:scsi/features/ai_detection/domain/entities/detection.dart';
 import 'package:scsi/features/chain_of_custody/domain/entities/audit_event.dart';
 import 'package:scsi/features/evidence/domain/entities/evidence_item.dart';
 import 'package:scsi/features/evidence/presentation/recording_controller.dart';
 import 'package:scsi/features/evidence/presentation/pages/evidence_detail_page.dart';
 import 'package:scsi/features/evidence/presentation/evidence_export_service.dart';
+import 'package:scsi/features/evidence/data/recording_manifest.dart';
+import 'package:scsi/features/evidence/presentation/pages/video_timeline_page.dart';
 import 'package:scsi/features/reporting/presentation/report_generator.dart';
 import 'package:scsi/features/case_management/domain/entities/case_file.dart';
 import 'package:scsi/features/timeline/domain/entities/timeline_entry.dart';
@@ -36,7 +41,7 @@ class CaseDetailPage extends ConsumerWidget {
     final isRecording = recording.isRecording;
 
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: Text(caseFile.title),
@@ -44,6 +49,7 @@ class CaseDetailPage extends ConsumerWidget {
             tabs: [
               Tab(text: 'Evidence'),
               Tab(text: 'Timeline'),
+              Tab(text: 'Segments'),
               Tab(text: 'Map'),
               Tab(text: 'Audit'),
               Tab(text: 'Reports'),
@@ -135,6 +141,7 @@ class CaseDetailPage extends ConsumerWidget {
                 children: [
                   EvidenceTab(caseFile: caseFile),
                   TimelineTab(caseFile: caseFile),
+                  SegmentsTab(caseFile: caseFile),
                   MapTab(caseFile: caseFile),
                   AuditTab(caseFile: caseFile),
                   ReportsTab(caseFile: caseFile),
@@ -459,21 +466,29 @@ class EvidenceFilterState {
     this.type,
     this.start,
     this.end,
+    this.query = '',
+    this.aiCategories = const [],
   });
 
   final EvidenceType? type;
   final DateTime? start;
   final DateTime? end;
+  final String query;
+  final List<AiCategory> aiCategories;
 
   EvidenceFilterState copyWith({
     EvidenceType? type,
     DateTime? start,
     DateTime? end,
+    String? query,
+    List<AiCategory>? aiCategories,
   }) {
     return EvidenceFilterState(
       type: type ?? this.type,
       start: start ?? this.start,
       end: end ?? this.end,
+      query: query ?? this.query,
+      aiCategories: aiCategories ?? this.aiCategories,
     );
   }
 }
@@ -494,6 +509,10 @@ final reportListProvider = FutureProvider.family((ref, CaseId caseId) {
   return ref.read(reportRepositoryProvider).listReports(caseId);
 });
 
+final detectionListProvider = FutureProvider.family((ref, CaseId caseId) {
+  return ref.read(detectionRepositoryProvider).listDetections(caseId);
+});
+
 final recordingSessionsProvider =
     FutureProvider.family<List<RecordingSessionRecord>, CaseId>((ref, caseId) async {
   final db = ref.read(databaseProvider);
@@ -508,6 +527,14 @@ final pathPointsProvider =
   return ref.read(geospatialRepositoryProvider).listPathPoints(sessionId);
 });
 
+final recordingManifestProvider =
+    FutureProvider.family<RecordingManifest?, RecordingSessionId>((ref, sessionId) async {
+  final settings = ref.read(settingsRepositoryProvider);
+  final dir = await settings.getSessionDir(sessionId.value);
+  if (dir == null) return null;
+  return RecordingManifest.loadFromSessionDir(dir);
+});
+
 class EvidenceTab extends ConsumerWidget {
   const EvidenceTab({super.key, required this.caseFile});
 
@@ -516,51 +543,77 @@ class EvidenceTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final filter = ref.watch(evidenceFilterProvider);
-    return ref.watch(evidenceListProvider(caseFile.id)).when(
-      data: (items) {
-        final filtered = items.where((item) {
-          if (filter.type != null && item.type != filter.type) return false;
-          final captured = item.capturedAt.utc;
-          if (filter.start != null && captured.isBefore(filter.start!)) return false;
-          if (filter.end != null && captured.isAfter(filter.end!)) return false;
-          return true;
-        }).toList();
+    final detectionsAsync = ref.watch(detectionListProvider(caseFile.id));
+    final evidenceAsync = ref.watch(evidenceListProvider(caseFile.id));
 
-        if (filtered.isEmpty) {
-          return const Center(child: Text('No evidence captured yet.'));
-        }
-        return Column(
-          children: [
-            _EvidenceFilterBar(
-              filter: filter,
-              onChanged: (next) => ref.read(evidenceFilterProvider.notifier).state = next,
-            ),
-            const Divider(height: 1),
-            Expanded(
-              child: ListView.separated(
-                itemCount: filtered.length,
-          separatorBuilder: (_, __) => const Divider(height: 1),
-          itemBuilder: (context, index) {
-            final item = filtered[index];
-            return ListTile(
-              title: Text(item.type.name.toUpperCase()),
-              subtitle: Text(item.capturedAt.utc.toLocal().toString()),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => EvidenceDetailPage(
-                      evidence: item,
-                      settingsRepository: ref.read(settingsRepositoryProvider),
-                    ),
-                  ),
-                );
-              },
+    return evidenceAsync.when(
+      data: (items) {
+        return detectionsAsync.when(
+          data: (detections) {
+            final detectionIds = _evidenceIdsForCategories(
+              detections,
+              filter.aiCategories,
+            );
+            final filtered = items.where((item) {
+              if (filter.type != null && item.type != filter.type) return false;
+              final captured = item.capturedAt.utc;
+              if (filter.start != null && captured.isBefore(filter.start!)) return false;
+              if (filter.end != null && captured.isAfter(filter.end!)) return false;
+              if (filter.aiCategories.isNotEmpty &&
+                  !detectionIds.contains(item.id.value)) {
+                return false;
+              }
+              if (filter.query.isNotEmpty &&
+                  !_matchesQuery(item, filter.query)) {
+                return false;
+              }
+              return true;
+            }).toList();
+
+            return Column(
+              children: [
+                _EvidenceFilterBar(
+                  filter: filter,
+                  onChanged: (next) =>
+                      ref.read(evidenceFilterProvider.notifier).state = next,
+                  showAiFilters: true,
+                  showSearch: true,
+                ),
+                const Divider(height: 1),
+                Expanded(
+                  child: filtered.isEmpty
+                      ? const Center(child: Text('No evidence matches filters.'))
+                      : ListView.separated(
+                          itemCount: filtered.length,
+                          separatorBuilder: (_, __) =>
+                              const Divider(height: 1),
+                          itemBuilder: (context, index) {
+                            final item = filtered[index];
+                            return ListTile(
+                              title: Text(item.type.name.toUpperCase()),
+                              subtitle:
+                                  Text(item.capturedAt.utc.toLocal().toString()),
+                              trailing: const Icon(Icons.chevron_right),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => EvidenceDetailPage(
+                                      evidence: item,
+                                      settingsRepository:
+                                          ref.read(settingsRepositoryProvider),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                ),
+              ],
             );
           },
-              ),
-            ),
-          ],
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, _) => Center(child: Text('Error: $error')),
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -643,6 +696,63 @@ class TimelineTab extends ConsumerWidget {
   }
 }
 
+class SegmentsTab extends ConsumerWidget {
+  const SegmentsTab({super.key, required this.caseFile});
+
+  final CaseFile caseFile;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final sessionsAsync = ref.watch(recordingSessionsProvider(caseFile.id));
+    return sessionsAsync.when(
+      data: (sessions) {
+        if (sessions.isEmpty) {
+          return const Center(child: Text('No recording sessions yet.'));
+        }
+        final sessionId = RecordingSessionId(sessions.first.id);
+        final manifestAsync = ref.watch(recordingManifestProvider(sessionId));
+        return manifestAsync.when(
+          data: (manifest) {
+            final segments = manifest?.segments ?? [];
+            if (segments.isEmpty) {
+              return const Center(child: Text('No segments found yet.'));
+            }
+            return ListView.separated(
+              itemCount: segments.length,
+              separatorBuilder: (_, __) => const Divider(height: 1),
+              itemBuilder: (context, index) {
+                final segment = segments[index];
+                return ListTile(
+                  title: Text('Segment ${index + 1}'),
+                  subtitle: Text(
+                    '${segment.startOffsetMs ~/ 1000}s - ${segment.endOffsetMs ~/ 1000}s',
+                  ),
+                  trailing: const Icon(Icons.play_circle_outline),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => VideoTimelinePage(
+                          sessionId: sessionId.value,
+                          offset: Duration(milliseconds: segment.startOffsetMs),
+                          settingsRepository: ref.read(settingsRepositoryProvider),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, _) => Center(child: Text('Error: $error')),
+        );
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) => Center(child: Text('Error: $error')),
+    );
+  }
+}
+
 TimelineEntryType? _mapEvidenceTypeToTimeline(EvidenceType type) {
   switch (type) {
     case EvidenceType.photo:
@@ -661,11 +771,15 @@ class _EvidenceFilterBar extends StatelessWidget {
     required this.filter,
     required this.onChanged,
     this.includeTypeAll = false,
+    this.showAiFilters = false,
+    this.showSearch = false,
   });
 
   final EvidenceFilterState filter;
   final ValueChanged<EvidenceFilterState> onChanged;
   final bool includeTypeAll;
+  final bool showAiFilters;
+  final bool showSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -676,6 +790,18 @@ class _EvidenceFilterBar extends StatelessWidget {
         runSpacing: 8,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
+          if (showSearch)
+            SizedBox(
+              width: 180,
+              child: TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Search notes',
+                  isDense: true,
+                ),
+                onChanged: (value) =>
+                    onChanged(filter.copyWith(query: value.trim())),
+              ),
+            ),
           DropdownButton<EvidenceType?>(
             value: filter.type,
             hint: const Text('Type'),
@@ -694,6 +820,26 @@ class _EvidenceFilterBar extends StatelessWidget {
             ],
             onChanged: (value) => onChanged(filter.copyWith(type: value)),
           ),
+          if (showAiFilters)
+            Wrap(
+              spacing: 6,
+              children: AiCategory.values.map((category) {
+                final selected = filter.aiCategories.contains(category);
+                return FilterChip(
+                  label: Text(category.name),
+                  selected: selected,
+                  onSelected: (value) {
+                    final next = List<AiCategory>.from(filter.aiCategories);
+                    if (value) {
+                      next.add(category);
+                    } else {
+                      next.remove(category);
+                    }
+                    onChanged(filter.copyWith(aiCategories: next));
+                  },
+                );
+              }).toList(),
+            ),
           OutlinedButton.icon(
             onPressed: () async {
               final picked = await showDateRangePicker(
@@ -726,6 +872,38 @@ class _EvidenceFilterBar extends StatelessWidget {
       ),
     );
   }
+}
+
+Set<String> _evidenceIdsForCategories(
+  List<Detection> detections,
+  List<AiCategory> categories,
+) {
+  if (categories.isEmpty) return {};
+  final ids = <String>{};
+  for (final det in detections) {
+    if (det.evidenceId == null) continue;
+    if (categories.contains(det.category)) {
+      ids.add(det.evidenceId!.value);
+    }
+  }
+  return ids;
+}
+
+bool _matchesQuery(EvidenceItem item, String query) {
+  final lower = query.toLowerCase();
+  if (item is NoteEvidence) {
+    return item.text.toLowerCase().contains(lower);
+  }
+  if (item is PhotoEvidence) {
+    return item.file.path.toLowerCase().contains(lower);
+  }
+  if (item is AudioEvidence) {
+    return item.file.path.toLowerCase().contains(lower);
+  }
+  if (item is VideoSegmentEvidence) {
+    return item.segment.file.path.toLowerCase().contains(lower);
+  }
+  return item.type.name.toLowerCase().contains(lower);
 }
 
 class MapTab extends ConsumerWidget {
@@ -802,6 +980,7 @@ class MapTab extends ConsumerWidget {
                           'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                       subdomains: const ['a', 'b', 'c'],
                       userAgentPackageName: 'com.scsi.app',
+                      tileProvider: FMTCStore('scsi').getTileProvider(),
                     ),
                     PolylineLayer(polylines: [polyline]),
                     MarkerLayer(markers: markers),
