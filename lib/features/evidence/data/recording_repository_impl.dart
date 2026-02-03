@@ -4,12 +4,15 @@ import 'package:scsi/core/platform/recording_service_channel.dart';
 import 'package:scsi/features/evidence/domain/entities/evidence_item.dart';
 import 'package:scsi/features/evidence/domain/repositories/recording_repository.dart';
 import 'package:scsi/features/evidence/domain/value_objects/recording_config.dart';
+import 'package:scsi/core/settings/settings_repository.dart';
 
 class RecordingRepositoryImpl implements RecordingRepository {
-  RecordingRepositoryImpl({RecordingServiceChannel? channel})
-      : _channel = channel ?? RecordingServiceChannel();
+  RecordingRepositoryImpl({RecordingServiceChannel? channel, SettingsRepository? settings})
+      : _channel = channel ?? RecordingServiceChannel(),
+        _settings = settings ?? SettingsRepository();
 
   final RecordingServiceChannel _channel;
+  final SettingsRepository _settings;
   RecordingSession? _activeSession;
 
   @override
@@ -19,7 +22,7 @@ class RecordingRepositoryImpl implements RecordingRepository {
     required RecordingConfig config,
   }) async {
     final sessionId = IdFactory.newRecordingSessionId();
-    await _channel.start(
+    final result = await _channel.start(
       RecordingStartRequest(
         caseId: caseId.value,
         sessionId: sessionId.value,
@@ -33,6 +36,7 @@ class RecordingRepositoryImpl implements RecordingRepository {
       ),
     );
 
+    await _settings.setSessionDir(sessionId.value, result.sessionDir);
     final session = RecordingSession(
       id: sessionId,
       caseId: caseId,

@@ -57,7 +57,7 @@ final evidenceRepositoryProvider = Provider<EvidenceRepository>((ref) {
 });
 
 final recordingRepositoryProvider = Provider<RecordingRepository>((ref) {
-  return RecordingRepositoryImpl();
+  return RecordingRepositoryImpl(settings: ref.read(settingsRepositoryProvider));
 });
 
 final detectionRepositoryProvider = Provider<DetectionRepository>((ref) {

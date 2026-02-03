@@ -18,6 +18,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:scsi/features/chain_of_custody/domain/entities/audit_event.dart';
 import 'package:scsi/features/evidence/domain/entities/evidence_item.dart';
 import 'package:scsi/features/evidence/presentation/recording_controller.dart';
+import 'package:scsi/features/evidence/presentation/pages/evidence_detail_page.dart';
 import 'package:scsi/features/reporting/presentation/report_generator.dart';
 import 'package:scsi/features/case_management/domain/entities/case_file.dart';
 import 'package:scsi/features/timeline/domain/entities/timeline_entry.dart';
@@ -164,6 +165,7 @@ class CaseDetailPage extends ConsumerWidget {
     final fileRef = await ref
         .read(evidenceCaptureServiceProvider)
         .savePhoto(caseId: caseFile.id, photo: photo);
+    final imageInfo = await _readImageInfo(fileRef.path);
 
     final evidence = PhotoEvidence(
       id: IdFactory.newEvidenceId(),
@@ -174,8 +176,8 @@ class CaseDetailPage extends ConsumerWidget {
       videoOffset: ref.read(recordingControllerProvider.notifier).videoOffset(),
       location: location,
       file: fileRef,
-      width: 0,
-      height: 0,
+      width: imageInfo.$1,
+      height: imageInfo.$2,
       mimeType: 'image/jpeg',
     );
 
@@ -396,6 +398,16 @@ class CaseDetailPage extends ConsumerWidget {
     );
     await timelineRepo.addEntry(entry);
   }
+
+  Future<(int, int)> _readImageInfo(String path) async {
+    try {
+      final bytes = await File(path).readAsBytes();
+      final image = await decodeImageFromList(bytes);
+      return (image.width, image.height);
+    } catch (_) {
+      return (0, 0);
+    }
+  }
 }
 
 final evidenceListProvider = FutureProvider.family<List<EvidenceItem>, CaseId>((ref, caseId) {
@@ -448,6 +460,17 @@ class EvidenceTab extends ConsumerWidget {
             return ListTile(
               title: Text(item.type.name.toUpperCase()),
               subtitle: Text(item.capturedAt.utc.toLocal().toString()),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => EvidenceDetailPage(
+                      evidence: item,
+                      settingsRepository: ref.read(settingsRepositoryProvider),
+                    ),
+                  ),
+                );
+              },
             );
           },
         );
@@ -478,6 +501,26 @@ class TimelineTab extends ConsumerWidget {
             return ListTile(
               title: Text(entry.type.name),
               subtitle: Text(entry.occurredAt.utc.toLocal().toString()),
+              trailing: entry.evidenceId != null
+                  ? const Icon(Icons.chevron_right)
+                  : null,
+              onTap: entry.evidenceId == null
+                  ? null
+                  : () async {
+                      final evidence = await ref
+                          .read(evidenceRepositoryProvider)
+                          .getEvidence(entry.evidenceId!);
+                      if (evidence == null || !context.mounted) return;
+                      if (!context.mounted) return;
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => EvidenceDetailPage(
+                            evidence: evidence,
+                            settingsRepository: ref.read(settingsRepositoryProvider),
+                          ),
+                        ),
+                      );
+                    },
             );
           },
         );

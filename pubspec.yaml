@@ -27,6 +27,8 @@ dependencies:
   printing: ^5.13.4
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
+  video_player: ^2.9.2
+  audioplayers: ^6.1.0
   shared_preferences: ^2.3.2
 
 flutter:
