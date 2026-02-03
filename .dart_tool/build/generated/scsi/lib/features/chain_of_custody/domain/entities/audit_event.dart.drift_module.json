@@ -1,0 +1,12 @@
+{
+  "elements": {},
+  "imports": [
+    "package:equatable/equatable.dart",
+    "package:scsi/core/crypto/hash_utils.dart",
+    "package:scsi/core/domain/enums/audit_action.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/core/utils/canonical_json.dart"
+  ]
+}

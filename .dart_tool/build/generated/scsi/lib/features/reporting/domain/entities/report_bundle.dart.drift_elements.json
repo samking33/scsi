@@ -1,0 +1,1 @@
+{"valid_import":true,"imports":[{"uri":"package:equatable/equatable.dart","transitive":false},{"uri":"package:scsi/core/domain/value_objects/encrypted_file_ref.dart","transitive":false},{"uri":"package:scsi/core/domain/value_objects/ids.dart","transitive":false},{"uri":"package:scsi/core/domain/value_objects/timestamp.dart","transitive":false}],"elements":[]}

@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/enums/ai_category.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/features/ai_detection/domain/entities/detection.dart"
+  ]
+}

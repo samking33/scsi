@@ -1,0 +1,18 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:scsi/app/providers.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/enums/audit_action.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/chain_of_custody/domain/entities/audit_event.dart",
+    "package:scsi/features/evidence/domain/entities/evidence_item.dart",
+    "package:scsi/features/evidence/domain/repositories/recording_repository.dart",
+    "package:scsi/features/evidence/domain/value_objects/recording_config.dart",
+    "package:scsi/features/geospatial/domain/entities/officer_path_point.dart",
+    "package:scsi/features/timeline/domain/entities/timeline_entry.dart"
+  ]
+}

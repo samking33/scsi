@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:scsi/features/case_management/presentation/pages/case_home_page.dart"
+  ]
+}

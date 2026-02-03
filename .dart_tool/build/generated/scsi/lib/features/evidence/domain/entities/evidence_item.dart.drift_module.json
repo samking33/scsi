@@ -1,0 +1,11 @@
+{
+  "elements": {},
+  "imports": [
+    "package:equatable/equatable.dart",
+    "package:scsi/core/domain/enums/evidence_type.dart",
+    "package:scsi/core/domain/value_objects/encrypted_file_ref.dart",
+    "package:scsi/core/domain/value_objects/geo_location.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart"
+  ]
+}

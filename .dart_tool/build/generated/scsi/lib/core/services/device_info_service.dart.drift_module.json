@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/entities/device_info.dart",
+    "package:scsi/core/domain/value_objects/ids.dart"
+  ]
+}

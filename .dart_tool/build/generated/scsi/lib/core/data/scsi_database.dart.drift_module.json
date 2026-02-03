@@ -1,0 +1,2661 @@
+{
+  "elements": {
+    "ScsiDatabase": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "ScsiDatabase"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 6180,
+        "name": "ScsiDatabase"
+      },
+      "references": [
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "cases"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "recording_sessions"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "video_segments"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "evidence_items"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "detections"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "audit_events"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "timeline_entries"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "officer_path_points"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "reports"
+        }
+      ],
+      "type": "database",
+      "tables": [
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "cases"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "recording_sessions"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "video_segments"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "evidence_items"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "detections"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "audit_events"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "timeline_entries"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "officer_path_points"
+        },
+        {
+          "library_uri": "package:scsi/core/data/scsi_database.dart",
+          "name": "reports"
+        }
+      ],
+      "views": [],
+      "includes": [],
+      "queries": [],
+      "schema_version": 1,
+      "daos": [],
+      "has_constructor_arg": false
+    },
+    "cases": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "cases"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 260,
+        "name": "Cases"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 299,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "title",
+          "nameInDart": "title",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 332,
+            "name": "title"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "description",
+          "nameInDart": "description",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 368,
+            "name": "description"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "jurisdiction",
+          "nameInDart": "jurisdiction",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 421,
+            "name": "jurisdiction"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "created_at",
+          "nameInDart": "createdAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 474,
+            "name": "createdAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "officer_id",
+          "nameInDart": "officerId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 518,
+            "name": "officerId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "officer_name",
+          "nameInDart": "officerName",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 558,
+            "name": "officerName"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "officer_badge",
+          "nameInDart": "officerBadge",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 600,
+            "name": "officerBadge"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "officer_agency",
+          "nameInDart": "officerAgency",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 643,
+            "name": "officerAgency"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "officer_rank",
+          "nameInDart": "officerRank",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 687,
+            "name": "officerRank"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "device_id",
+          "nameInDart": "deviceId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 730,
+            "name": "deviceId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "device_manufacturer",
+          "nameInDart": "deviceManufacturer",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 769,
+            "name": "deviceManufacturer"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "device_model",
+          "nameInDart": "deviceModel",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 818,
+            "name": "deviceModel"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "device_os_version",
+          "nameInDart": "deviceOsVersion",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 860,
+            "name": "deviceOsVersion"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "device_app_version",
+          "nameInDart": "deviceAppVersion",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 906,
+            "name": "deviceAppVersion"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "initial_lat",
+          "nameInDart": "initialLat",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 954,
+            "name": "initialLat"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "initial_lng",
+          "nameInDart": "initialLng",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 995,
+            "name": "initialLng"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "initial_alt",
+          "nameInDart": "initialAlt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1036,
+            "name": "initialAlt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "initial_accuracy",
+          "nameInDart": "initialAccuracy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1088,
+            "name": "initialAccuracy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "initial_heading",
+          "nameInDart": "initialHeading",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1145,
+            "name": "initialHeading"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "initial_speed",
+          "nameInDart": "initialSpeed",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1201,
+            "name": "initialSpeed"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "Cases",
+      "row_class_name": "CaseRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "recording_sessions": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "recording_sessions"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 1339,
+        "name": "RecordingSessions"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1390,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1423,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "started_at",
+          "nameInDart": "startedAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1459,
+            "name": "startedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "started_by",
+          "nameInDart": "startedBy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1502,
+            "name": "startedBy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "ended_at",
+          "nameInDart": "endedAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1541,
+            "name": "endedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "ended_by",
+          "nameInDart": "endedBy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1593,
+            "name": "endedBy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "RecordingSessions",
+      "row_class_name": "RecordingSessionRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "video_segments": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "video_segments"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 1722,
+        "name": "VideoSegments"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1769,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "session_id",
+          "nameInDart": "sessionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1802,
+            "name": "sessionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "file_path",
+          "nameInDart": "filePath",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1842,
+            "name": "filePath"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "sha256",
+          "nameInDart": "sha256",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1881,
+            "name": "sha256"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "size_bytes",
+          "nameInDart": "sizeBytes",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1917,
+            "name": "sizeBytes"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "start_time",
+          "nameInDart": "startTime",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 1959,
+            "name": "startTime"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "end_time",
+          "nameInDart": "endTime",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2001,
+            "name": "endTime"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "start_offset_ms",
+          "nameInDart": "startOffsetMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2041,
+            "name": "startOffsetMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "end_offset_ms",
+          "nameInDart": "endOffsetMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2087,
+            "name": "endOffsetMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "bool"
+          },
+          "nullable": false,
+          "nameInSql": "finalized",
+          "nameInDart": "finalized",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2132,
+            "name": "finalized"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              "const ",
+              {
+                "lexeme": "Constant",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              },
+              "(true)"
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "bool"
+          },
+          "nullable": false,
+          "nameInSql": "abrupt",
+          "nameInDart": "abrupt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2209,
+            "name": "abrupt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              "const ",
+              {
+                "lexeme": "Constant",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              },
+              "(false)"
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "VideoSegments",
+      "row_class_name": "VideoSegmentRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "evidence_items": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "evidence_items"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 2364,
+        "name": "EvidenceItems"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2411,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2444,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "session_id",
+          "nameInDart": "sessionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2481,
+            "name": "sessionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "captured_by",
+          "nameInDart": "capturedBy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2521,
+            "name": "capturedBy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "captured_at",
+          "nameInDart": "capturedAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2561,
+            "name": "capturedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "video_offset_ms",
+          "nameInDart": "videoOffsetMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2604,
+            "name": "videoOffsetMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "latitude",
+          "nameInDart": "latitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2652,
+            "name": "latitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "longitude",
+          "nameInDart": "longitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2691,
+            "name": "longitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "altitude",
+          "nameInDart": "altitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2731,
+            "name": "altitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "accuracy",
+          "nameInDart": "accuracy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2781,
+            "name": "accuracy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "heading",
+          "nameInDart": "heading",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2831,
+            "name": "heading"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "speed",
+          "nameInDart": "speed",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2880,
+            "name": "speed"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "type",
+          "nameInDart": "type",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2928,
+            "name": "type"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "file_path",
+          "nameInDart": "filePath",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 2963,
+            "name": "filePath"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "sha256",
+          "nameInDart": "sha256",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3013,
+            "name": "sha256"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "size_bytes",
+          "nameInDart": "sizeBytes",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3060,
+            "name": "sizeBytes"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "mime_type",
+          "nameInDart": "mimeType",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3114,
+            "name": "mimeType"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "width",
+          "nameInDart": "width",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3163,
+            "name": "width"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "height",
+          "nameInDart": "height",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3212,
+            "name": "height"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "duration_ms",
+          "nameInDart": "durationMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3262,
+            "name": "durationMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "note_text",
+          "nameInDart": "noteText",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3317,
+            "name": "noteText"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "EvidenceItems",
+      "row_class_name": "EvidenceItemRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "detections": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "detections"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 3444,
+        "name": "Detections"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3488,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3521,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "session_id",
+          "nameInDart": "sessionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3558,
+            "name": "sessionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "evidence_id",
+          "nameInDart": "evidenceId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3598,
+            "name": "evidenceId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "category",
+          "nameInDart": "category",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3650,
+            "name": "category"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "confidence",
+          "nameInDart": "confidence",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3689,
+            "name": "confidence"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "bbox_left",
+          "nameInDart": "bboxLeft",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3730,
+            "name": "bboxLeft"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "bbox_top",
+          "nameInDart": "bboxTop",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3769,
+            "name": "bboxTop"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "bbox_right",
+          "nameInDart": "bboxRight",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3807,
+            "name": "bboxRight"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "bbox_bottom",
+          "nameInDart": "bboxBottom",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3847,
+            "name": "bboxBottom"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "bool"
+          },
+          "nullable": false,
+          "nameInSql": "bbox_normalized",
+          "nameInDart": "bboxNormalized",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3888,
+            "name": "bboxNormalized"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "detected_at",
+          "nameInDart": "detectedAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3935,
+            "name": "detectedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "video_offset_ms",
+          "nameInDart": "videoOffsetMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 3978,
+            "name": "videoOffsetMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "Detections",
+      "row_class_name": "DetectionRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "audit_events": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "audit_events"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 4114,
+        "name": "AuditEvents"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4159,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4192,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "sequence",
+          "nameInDart": "sequence",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4228,
+            "name": "sequence"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "action",
+          "nameInDart": "action",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4270,
+            "name": "action"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "occurred_at",
+          "nameInDart": "occurredAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4306,
+            "name": "occurredAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "details_json",
+          "nameInDart": "detailsJson",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4350,
+            "name": "detailsJson"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "previous_hash",
+          "nameInDart": "previousHash",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4392,
+            "name": "previousHash"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "hash",
+          "nameInDart": "hash",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4435,
+            "name": "hash"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "actor_id",
+          "nameInDart": "actorId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4470,
+            "name": "actorId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "AuditEvents",
+      "row_class_name": "AuditEventRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "timeline_entries": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "timeline_entries"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 4600,
+        "name": "TimelineEntries"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4649,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4682,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "session_id",
+          "nameInDart": "sessionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4719,
+            "name": "sessionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "type",
+          "nameInDart": "type",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4759,
+            "name": "type"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "occurred_at",
+          "nameInDart": "occurredAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4793,
+            "name": "occurredAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "video_offset_ms",
+          "nameInDart": "videoOffsetMs",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4836,
+            "name": "videoOffsetMs"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "evidence_id",
+          "nameInDart": "evidenceId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4883,
+            "name": "evidenceId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "segment_id",
+          "nameInDart": "segmentId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4935,
+            "name": "segmentId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "detection_id",
+          "nameInDart": "detectionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 4986,
+            "name": "detectionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "TimelineEntries",
+      "row_class_name": "TimelineEntryRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "officer_path_points": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "officer_path_points"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 5123,
+        "name": "OfficerPathPoints"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5173,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [
+            {
+              "type": "primary",
+              "is_auto_increment": true
+            }
+          ],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "session_id",
+          "nameInDart": "sessionId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5225,
+            "name": "sessionId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "latitude",
+          "nameInDart": "latitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5265,
+            "name": "latitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "longitude",
+          "nameInDart": "longitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5304,
+            "name": "longitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "altitude",
+          "nameInDart": "altitude",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5344,
+            "name": "altitude"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "accuracy",
+          "nameInDart": "accuracy",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5394,
+            "name": "accuracy"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "heading",
+          "nameInDart": "heading",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5444,
+            "name": "heading"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "speed",
+          "nameInDart": "speed",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5493,
+            "name": "speed"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "timestamp",
+          "nameInDart": "timestamp",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5539,
+            "name": "timestamp"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "OfficerPathPoints",
+      "row_class_name": "OfficerPathPointRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "reports": {
+      "id": {
+        "library_uri": "package:scsi/core/data/scsi_database.dart",
+        "name": "reports"
+      },
+      "declaration": {
+        "source_uri": "package:scsi/core/data/scsi_database.dart",
+        "offset": 5605,
+        "name": "Reports"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5646,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "case_id",
+          "nameInDart": "caseId",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5679,
+            "name": "caseId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "generated_at",
+          "nameInDart": "generatedAt",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5715,
+            "name": "generatedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "file_path",
+          "nameInDart": "filePath",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5760,
+            "name": "filePath"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "sha256",
+          "nameInDart": "sha256",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5799,
+            "name": "sha256"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "size_bytes",
+          "nameInDart": "sizeBytes",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5835,
+            "name": "sizeBytes"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "bool"
+          },
+          "nullable": true,
+          "nameInSql": "password_protected",
+          "nameInDart": "passwordProtected",
+          "declaration": {
+            "source_uri": "package:scsi/core/data/scsi_database.dart",
+            "offset": 5878,
+            "name": "passwordProtected"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "interfaces_for_row_class": [],
+      "fixed_entity_info_name": null,
+      "base_dart_name": "Reports",
+      "row_class_name": "ReportRecord",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    }
+  },
+  "imports": [
+    "package:drift/drift.dart",
+    "package:drift_flutter/drift_flutter.dart",
+    "package:path/path.dart",
+    "package:path_provider/path_provider.dart"
+  ]
+}

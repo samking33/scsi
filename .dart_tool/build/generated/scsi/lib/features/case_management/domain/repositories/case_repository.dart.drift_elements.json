@@ -1,0 +1,1 @@
+{"valid_import":true,"imports":[{"uri":"package:scsi/core/domain/value_objects/ids.dart","transitive":false},{"uri":"package:scsi/features/case_management/domain/entities/case_file.dart","transitive":false}],"elements":[]}

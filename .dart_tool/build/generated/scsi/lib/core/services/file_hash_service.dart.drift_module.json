@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/crypto/hash_utils.dart",
+    "package:scsi/core/domain/value_objects/encrypted_file_ref.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart"
+  ]
+}

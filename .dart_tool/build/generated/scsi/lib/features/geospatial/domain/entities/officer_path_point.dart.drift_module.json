@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:equatable/equatable.dart",
+    "package:scsi/core/domain/value_objects/geo_location.dart",
+    "package:scsi/core/domain/value_objects/ids.dart"
+  ]
+}

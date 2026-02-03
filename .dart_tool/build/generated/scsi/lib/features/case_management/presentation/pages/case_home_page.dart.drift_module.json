@@ -1,0 +1,13 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:scsi/app/providers.dart",
+    "package:scsi/core/domain/entities/officer.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/case_management/domain/entities/case_file.dart",
+    "package:scsi/features/case_management/presentation/pages/case_detail_page.dart"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/features/chain_of_custody/domain/entities/audit_event.dart"
+  ]
+}

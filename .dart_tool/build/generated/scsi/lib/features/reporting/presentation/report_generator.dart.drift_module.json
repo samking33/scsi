@@ -1,0 +1,16 @@
+{
+  "elements": {},
+  "imports": [
+    "package:path/path.dart",
+    "package:path_provider/path_provider.dart",
+    "package:pdf/widgets.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/services/file_hash_service.dart",
+    "package:scsi/features/ai_detection/domain/repositories/detection_repository.dart",
+    "package:scsi/features/case_management/domain/entities/case_file.dart",
+    "package:scsi/features/chain_of_custody/domain/repositories/audit_repository.dart",
+    "package:scsi/features/evidence/domain/entities/evidence_item.dart",
+    "package:scsi/features/evidence/domain/repositories/evidence_repository.dart",
+    "package:scsi/features/reporting/domain/entities/report_bundle.dart"
+  ]
+}

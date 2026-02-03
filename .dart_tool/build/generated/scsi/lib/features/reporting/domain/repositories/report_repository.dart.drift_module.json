@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/features/reporting/domain/entities/report_bundle.dart"
+  ]
+}

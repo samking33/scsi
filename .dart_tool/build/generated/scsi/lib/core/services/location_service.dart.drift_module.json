@@ -1,0 +1,8 @@
+{
+  "elements": {},
+  "imports": [
+    "package:geolocator/geolocator.dart",
+    "package:scsi/core/domain/value_objects/geo_location.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart"
+  ]
+}

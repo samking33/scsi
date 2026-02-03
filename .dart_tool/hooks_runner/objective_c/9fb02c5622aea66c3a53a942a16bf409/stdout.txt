@@ -1,0 +1,61 @@
+Running `(cd /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/; TMPDIR=/var/folders/cz/qgyrxxx56w96tgpj52nm8w1c0000gn/T/ PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/Users/samking33/.codex/tmp/path/codex-arg0BJ9e9c:/opt/homebrew/opt/openjdk/bin:/Users/samking33/.local/bin:/Users/samking33/.cargo/bin:/Users/samking33/Library/Android/sdk/build-tools/35.0.0:/Users/samking33/.vscode/extensions/openai.chatgpt-0.4.69-darwin-arm64/bin/macos-aarch64:/Users/samking33/develop/flutter_sdk/bin HOME=/Users/samking33 /Users/samking33/develop/flutter_sdk/bin/cache/dart-sdk/bin/dart --packages=/Users/samking33/SCSI/.dart_tool/package_config.json /Users/samking33/SCSI/.dart_tool/hooks_runner/objective_c/9fb02c5622aea66c3a53a942a16bf409/hook.dill --config=/Users/samking33/SCSI/.dart_tool/hooks_runner/objective_c/9fb02c5622aea66c3a53a942a16bf409/input.json )`.
+INFO: 2026-02-04 00:30:27.590905: Running `which clang`.
+
+INFO: 2026-02-04 00:30:27.605334: Running `/usr/bin/clang --version`.
+
+INFO: 2026-02-04 00:30:27.744377: Running `/usr/bin/clang --version`.
+
+INFO: 2026-02-04 00:30:27.761650: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/include/dart_api_dl.c -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-02-04 00:30:27.761972: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/objective_c.c -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.c.o
+
+INFO: 2026-02-04 00:30:27.762156: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/test/util.c -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/test/util.c.o
+
+INFO: 2026-02-04 00:30:27.762263: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/input_stream_adapter.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-02-04 00:30:27.762366: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/objective_c.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.m.o
+
+INFO: 2026-02-04 00:30:27.762466: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/observer.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/observer.m.o
+
+INFO: 2026-02-04 00:30:27.762647: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/ns_number.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/ns_number.m.o
+
+INFO: 2026-02-04 00:30:27.762836: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/protocol.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/protocol.m.o
+
+INFO: 2026-02-04 00:30:27.762954: Running: /usr/bin/clang -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 -x objective-c -fobjc-arc -c /Users/samking33/.pub-cache/hosted/pub.dev/objective_c-9.2.5/src/objective_c_bindings_generated.m -fpic -I src -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-02-04 00:30:27.882421: 
+INFO: 2026-02-04 00:30:27.882587: 
+INFO: 2026-02-04 00:30:27.882717: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-02-04 00:30:27.883071: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.c.o
+
+INFO: 2026-02-04 00:30:27.892303: 
+INFO: 2026-02-04 00:30:27.892324: 
+INFO: 2026-02-04 00:30:27.892335: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/observer.m.o
+
+INFO: 2026-02-04 00:30:27.893951: 
+INFO: 2026-02-04 00:30:27.893994: 
+INFO: 2026-02-04 00:30:27.894007: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/test/util.c.o
+
+INFO: 2026-02-04 00:30:28.158964: 
+INFO: 2026-02-04 00:30:28.159005: 
+INFO: 2026-02-04 00:30:28.159015: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/ns_number.m.o
+
+INFO: 2026-02-04 00:30:28.165742: 
+INFO: 2026-02-04 00:30:28.165778: 
+INFO: 2026-02-04 00:30:28.165786: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.m.o
+
+INFO: 2026-02-04 00:30:28.167712: 
+INFO: 2026-02-04 00:30:28.167731: 
+INFO: 2026-02-04 00:30:28.167738: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-02-04 00:30:28.183906: 
+INFO: 2026-02-04 00:30:28.183945: 
+INFO: 2026-02-04 00:30:28.183954: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-02-04 00:30:28.184203: Running: /usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -target arm64-apple-darwin -mmacos-version-min=12 /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/include/dart_api_dl.c.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.c.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/test/util.c.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/input_stream_adapter.m.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c.m.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/observer.m.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/ns_number.m.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/protocol.m.o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/obj/src/objective_c_bindings_generated.m.o -o /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/objective_c.dylib
+
+INFO: 2026-02-04 00:30:28.363543: 
+INFO: 2026-02-04 00:30:28.363599: 
+INFO: 2026-02-04 00:30:28.363608: Generated /Users/samking33/SCSI/.dart_tool/hooks_runner/shared/objective_c/build/9fb02c5622/objective_c.dylib
+

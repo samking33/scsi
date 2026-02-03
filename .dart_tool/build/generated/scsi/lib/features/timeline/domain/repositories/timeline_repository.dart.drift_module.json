@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/features/timeline/domain/entities/timeline_entry.dart"
+  ]
+}

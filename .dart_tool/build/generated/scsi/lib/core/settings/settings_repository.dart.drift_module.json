@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:shared_preferences/shared_preferences.dart",
+    "package:scsi/core/settings/app_settings.dart"
+  ]
+}

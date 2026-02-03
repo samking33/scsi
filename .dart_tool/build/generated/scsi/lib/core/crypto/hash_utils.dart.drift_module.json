@@ -1,0 +1,7 @@
+{
+  "elements": {},
+  "imports": [
+    "package:crypto/crypto.dart",
+    "package:scsi/core/domain/value_objects/hash.dart"
+  ]
+}

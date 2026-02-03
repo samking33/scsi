@@ -1,0 +1,13 @@
+{
+  "elements": {},
+  "imports": [
+    "package:drift/drift.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/enums/audit_action.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/chain_of_custody/domain/entities/audit_event.dart",
+    "package:scsi/features/chain_of_custody/domain/repositories/audit_repository.dart"
+  ]
+}

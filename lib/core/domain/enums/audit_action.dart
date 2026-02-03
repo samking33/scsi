@@ -1,0 +1,18 @@
+enum AuditAction {
+  caseCreated,
+  caseViewed,
+  caseExported,
+  recordingStarted,
+  recordingSegmentFinalized,
+  recordingStopped,
+  evidenceCaptured,
+  evidenceViewed,
+  evidenceExported,
+  evidenceDeletionAttempted,
+  evidenceModificationAttempted,
+  aiDetectionExecuted,
+  reportGenerated,
+  reportExported,
+  appBackgrounded,
+  appForegrounded,
+}

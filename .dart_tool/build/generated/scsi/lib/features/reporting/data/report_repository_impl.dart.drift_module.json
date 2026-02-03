@@ -1,0 +1,13 @@
+{
+  "elements": {},
+  "imports": [
+    "package:drift/drift.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/value_objects/encrypted_file_ref.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/reporting/domain/entities/report_bundle.dart",
+    "package:scsi/features/reporting/domain/repositories/report_repository.dart"
+  ]
+}

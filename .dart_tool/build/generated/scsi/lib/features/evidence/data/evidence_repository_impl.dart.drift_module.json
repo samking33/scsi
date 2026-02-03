@@ -1,0 +1,16 @@
+{
+  "elements": {},
+  "imports": [
+    "package:drift/drift.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/enums/ai_category.dart",
+    "package:scsi/core/domain/enums/evidence_type.dart",
+    "package:scsi/core/domain/value_objects/encrypted_file_ref.dart",
+    "package:scsi/core/domain/value_objects/geo_location.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/evidence/domain/entities/evidence_item.dart",
+    "package:scsi/features/evidence/domain/repositories/evidence_repository.dart"
+  ]
+}

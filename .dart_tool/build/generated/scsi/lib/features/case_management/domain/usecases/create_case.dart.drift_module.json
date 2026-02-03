@@ -1,0 +1,12 @@
+{
+  "elements": {},
+  "imports": [
+    "package:scsi/core/domain/entities/device_info.dart",
+    "package:scsi/core/domain/entities/officer.dart",
+    "package:scsi/core/domain/value_objects/geo_location.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/features/case_management/domain/entities/case_file.dart",
+    "package:scsi/features/case_management/domain/repositories/case_repository.dart"
+  ]
+}

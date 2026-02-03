@@ -1,0 +1,25 @@
+{
+  "elements": {},
+  "imports": [
+    "package:flutter/material.dart",
+    "package:flutter_riverpod/flutter_riverpod.dart",
+    "package:drift/drift.dart",
+    "package:image_picker/image_picker.dart",
+    "package:permission_handler/permission_handler.dart",
+    "package:record/record.dart",
+    "package:scsi/app/providers.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/enums/audit_action.dart",
+    "package:scsi/core/domain/enums/evidence_type.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/core/domain/value_objects/hash.dart",
+    "package:google_maps_flutter/google_maps_flutter.dart",
+    "package:scsi/features/chain_of_custody/domain/entities/audit_event.dart",
+    "package:scsi/features/evidence/domain/entities/evidence_item.dart",
+    "package:scsi/features/evidence/presentation/recording_controller.dart",
+    "package:scsi/features/reporting/presentation/report_generator.dart",
+    "package:scsi/features/case_management/domain/entities/case_file.dart",
+    "package:scsi/features/timeline/domain/entities/timeline_entry.dart"
+  ]
+}

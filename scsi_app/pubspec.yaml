@@ -1,0 +1,65 @@
+name: scsi_app
+description: Smart Crime Scene Investigation App - Production-ready forensic evidence collection system
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  
+  # Local Storage & Encryption
+  sqflite_sqlcipher: ^3.1.0
+  flutter_secure_storage: ^9.0.0
+  path_provider: ^2.1.1
+  
+  # Camera & Media
+  camera: ^0.10.5+5
+  video_player: ^2.8.1
+  image: ^4.1.3
+  
+  # Location & Maps
+  geolocator: ^10.1.0
+  google_maps_flutter: ^2.5.0
+  
+  # AI/ML
+  tflite_flutter: ^0.10.4
+  
+  # PDF Generation
+  pdf: ^3.10.7
+  printing: ^5.11.1
+  
+  # Utilities
+  uuid: ^4.2.1
+  crypto: ^3.0.3
+  intl: ^0.18.1
+  permission_handler: ^11.1.0
+  device_info_plus: ^9.1.1
+  
+  # Background Services
+  flutter_foreground_task: ^6.1.2
+  
+  # Audio Recording
+  record: ^5.0.4
+  audioplayers: ^5.2.1
+  
+  # UI Components
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.7
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/models/
+    - assets/fonts/

@@ -1,0 +1,15 @@
+{
+  "elements": {},
+  "imports": [
+    "package:drift/drift.dart",
+    "package:http/http.dart",
+    "package:scsi/core/data/scsi_database.dart",
+    "package:scsi/core/domain/enums/ai_category.dart",
+    "package:scsi/core/domain/value_objects/ids.dart",
+    "package:scsi/core/domain/value_objects/timestamp.dart",
+    "package:scsi/core/settings/app_settings.dart",
+    "package:scsi/core/settings/settings_repository.dart",
+    "package:scsi/features/ai_detection/domain/entities/detection.dart",
+    "package:scsi/features/ai_detection/domain/repositories/detection_repository.dart"
+  ]
+}
