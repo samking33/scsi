@@ -6,6 +6,7 @@ import 'package:drift/drift.dart' as drift;
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:scsi/app/providers.dart';
 import 'package:scsi/core/data/scsi_database.dart';
 import 'package:scsi/core/domain/enums/audit_action.dart';
@@ -19,6 +20,7 @@ import 'package:scsi/features/chain_of_custody/domain/entities/audit_event.dart'
 import 'package:scsi/features/evidence/domain/entities/evidence_item.dart';
 import 'package:scsi/features/evidence/presentation/recording_controller.dart';
 import 'package:scsi/features/evidence/presentation/pages/evidence_detail_page.dart';
+import 'package:scsi/features/evidence/presentation/evidence_export_service.dart';
 import 'package:scsi/features/reporting/presentation/report_generator.dart';
 import 'package:scsi/features/case_management/domain/entities/case_file.dart';
 import 'package:scsi/features/timeline/domain/entities/timeline_entry.dart';
@@ -118,6 +120,11 @@ class CaseDetailPage extends ConsumerWidget {
                     onPressed: () => _generateReport(context, ref),
                     icon: const Icon(Icons.picture_as_pdf),
                     label: const Text('Generate Report'),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: () => _exportBundle(context, ref),
+                    icon: const Icon(Icons.archive),
+                    label: const Text('Export Bundle'),
                   ),
                 ],
               ),
@@ -352,6 +359,34 @@ class CaseDetailPage extends ConsumerWidget {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Report generated.')),
+      );
+    }
+  }
+
+  Future<void> _exportBundle(BuildContext context, WidgetRef ref) async {
+    final exportService = EvidenceExportService(
+      evidenceRepository: ref.read(evidenceRepositoryProvider),
+      detectionRepository: ref.read(detectionRepositoryProvider),
+      timelineRepository: ref.read(timelineRepositoryProvider),
+      auditRepository: ref.read(auditRepositoryProvider),
+      reportRepository: ref.read(reportRepositoryProvider),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Preparing export bundle...')),
+    );
+
+    try {
+      final zipFile = await exportService.exportCaseBundle(caseFile.id.value);
+      if (!context.mounted) return;
+      await Share.shareXFiles(
+        [XFile(zipFile.path)],
+        text: 'Smart CSI export bundle',
+      );
+    } catch (err) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Export failed: $err')),
       );
     }
   }

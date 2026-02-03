@@ -29,6 +29,8 @@ dependencies:
   latlong2: ^0.9.1
   video_player: ^2.9.2
   audioplayers: ^6.1.0
+  archive: ^3.6.1
+  share_plus: ^10.1.2
   shared_preferences: ^2.3.2
 
 flutter:
