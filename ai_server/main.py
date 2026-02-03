@@ -2,6 +2,8 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from io import BytesIO
 from PIL import Image
+import os
+import torch
 from ultralytics import YOLO
 
 app = FastAPI(title="SCSI AI Server")
@@ -14,8 +16,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Extreme accuracy model (largest, slowest). Replace with a custom fine-tuned model if available.
-model = YOLO("yolov8x.pt")
+# Render free plan memory is tight. Default to a smaller CPU model unless overridden.
+MODEL_NAME = os.getenv("YOLO_MODEL", "yolov8s.pt")
+torch.set_num_threads(1)
+model = YOLO(MODEL_NAME)
 
 VEHICLE_CLASSES = {
     "bicycle",
@@ -41,7 +45,7 @@ async def detect(image: UploadFile = File(...)):
     img = Image.open(BytesIO(payload)).convert("RGB")
     width, height = img.size
 
-    results = model(img, verbose=False)[0]
+    results = model(img, verbose=False, device="cpu")[0]
     detections = []
 
     for box, cls_idx, conf in zip(

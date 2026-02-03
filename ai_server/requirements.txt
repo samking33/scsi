@@ -1,5 +1,9 @@
 fastapi
 uvicorn[standard]
 python-multipart
-ultralytics
 pillow
+# CPU-only torch to avoid CUDA packages on Render free plan
+torch==2.2.2+cpu ; sys_platform != "darwin"
+torchvision==0.17.2+cpu ; sys_platform != "darwin"
+ultralytics
+--extra-index-url https://download.pytorch.org/whl/cpu

@@ -36,7 +36,7 @@ Each detection item:
 
 ## Notes
 
-- For weapons/drugs/documents, replace `yolov8x.pt` with a custom fine-tuned model and update `map_category`.
+- For weapons/drugs/documents, replace `YOLO_MODEL` with a custom fine-tuned model and update `map_category`.
 - If running on an Android emulator, set the app AI base URL to `http://10.0.2.2:8000`.
 - If running on a device, use your machine's LAN IP (e.g. `http://192.168.1.10:8000`).
 
@@ -53,3 +53,8 @@ Or create a new Web Service in Render with:
 - Start: `uvicorn main:app --host 0.0.0.0 --port 8000`
 
 After deploy, set the app AI base URL to your Render service URL.
+
+## Render Free Plan Notes
+- The free plan has tight memory limits. The blueprint sets `YOLO_MODEL=yolov8s.pt`
+  and CPU-only torch to avoid CUDA packages and OOM.
+- If you want the larger model, upgrade the plan and set `YOLO_MODEL=yolov8x.pt`.
