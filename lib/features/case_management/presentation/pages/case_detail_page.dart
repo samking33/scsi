@@ -418,6 +418,38 @@ final timelineListProvider = FutureProvider.family<List<TimelineEntry>, CaseId>(
   return ref.read(timelineRepositoryProvider).listEntries(caseId);
 });
 
+class EvidenceFilterState {
+  EvidenceFilterState({
+    this.type,
+    this.start,
+    this.end,
+  });
+
+  final EvidenceType? type;
+  final DateTime? start;
+  final DateTime? end;
+
+  EvidenceFilterState copyWith({
+    EvidenceType? type,
+    DateTime? start,
+    DateTime? end,
+  }) {
+    return EvidenceFilterState(
+      type: type ?? this.type,
+      start: start ?? this.start,
+      end: end ?? this.end,
+    );
+  }
+}
+
+final evidenceFilterProvider = StateProvider<EvidenceFilterState>((ref) {
+  return EvidenceFilterState();
+});
+
+final timelineFilterProvider = StateProvider<EvidenceFilterState>((ref) {
+  return EvidenceFilterState();
+});
+
 final auditListProvider = FutureProvider.family((ref, CaseId caseId) {
   return ref.read(auditRepositoryProvider).listEvents(caseId);
 });
@@ -447,16 +479,33 @@ class EvidenceTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final filter = ref.watch(evidenceFilterProvider);
     return ref.watch(evidenceListProvider(caseFile.id)).when(
       data: (items) {
-        if (items.isEmpty) {
+        final filtered = items.where((item) {
+          if (filter.type != null && item.type != filter.type) return false;
+          final captured = item.capturedAt.utc;
+          if (filter.start != null && captured.isBefore(filter.start!)) return false;
+          if (filter.end != null && captured.isAfter(filter.end!)) return false;
+          return true;
+        }).toList();
+
+        if (filtered.isEmpty) {
           return const Center(child: Text('No evidence captured yet.'));
         }
-        return ListView.separated(
-          itemCount: items.length,
+        return Column(
+          children: [
+            _EvidenceFilterBar(
+              filter: filter,
+              onChanged: (next) => ref.read(evidenceFilterProvider.notifier).state = next,
+            ),
+            const Divider(height: 1),
+            Expanded(
+              child: ListView.separated(
+                itemCount: filtered.length,
           separatorBuilder: (_, __) => const Divider(height: 1),
           itemBuilder: (context, index) {
-            final item = items[index];
+            final item = filtered[index];
             return ListTile(
               title: Text(item.type.name.toUpperCase()),
               subtitle: Text(item.capturedAt.utc.toLocal().toString()),
@@ -473,6 +522,9 @@ class EvidenceTab extends ConsumerWidget {
               },
             );
           },
+              ),
+            ),
+          ],
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -488,16 +540,37 @@ class TimelineTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final filter = ref.watch(timelineFilterProvider);
     return ref.watch(timelineListProvider(caseFile.id)).when(
       data: (entries) {
-        if (entries.isEmpty) {
+        final filtered = entries.where((entry) {
+          if (filter.type != null) {
+            final wantedType = _mapEvidenceTypeToTimeline(filter.type!);
+            if (wantedType != null && entry.type != wantedType) return false;
+          }
+          final occurred = entry.occurredAt.utc;
+          if (filter.start != null && occurred.isBefore(filter.start!)) return false;
+          if (filter.end != null && occurred.isAfter(filter.end!)) return false;
+          return true;
+        }).toList();
+
+        if (filtered.isEmpty) {
           return const Center(child: Text('No timeline entries yet.'));
         }
-        return ListView.separated(
-          itemCount: entries.length,
+        return Column(
+          children: [
+            _EvidenceFilterBar(
+              filter: filter,
+              onChanged: (next) => ref.read(timelineFilterProvider.notifier).state = next,
+              includeTypeAll: true,
+            ),
+            const Divider(height: 1),
+            Expanded(
+              child: ListView.separated(
+                itemCount: filtered.length,
           separatorBuilder: (_, __) => const Divider(height: 1),
           itemBuilder: (context, index) {
-            final entry = entries[index];
+            final entry = filtered[index];
             return ListTile(
               title: Text(entry.type.name),
               subtitle: Text(entry.occurredAt.utc.toLocal().toString()),
@@ -523,10 +596,98 @@ class TimelineTab extends ConsumerWidget {
                     },
             );
           },
+              ),
+            ),
+          ],
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, _) => Center(child: Text('Error: $error')),
+    );
+  }
+}
+
+TimelineEntryType? _mapEvidenceTypeToTimeline(EvidenceType type) {
+  switch (type) {
+    case EvidenceType.photo:
+      return TimelineEntryType.photo;
+    case EvidenceType.audio:
+      return TimelineEntryType.audio;
+    case EvidenceType.note:
+      return TimelineEntryType.note;
+    case EvidenceType.videoSegment:
+      return TimelineEntryType.videoSegment;
+  }
+}
+
+class _EvidenceFilterBar extends StatelessWidget {
+  const _EvidenceFilterBar({
+    required this.filter,
+    required this.onChanged,
+    this.includeTypeAll = false,
+  });
+
+  final EvidenceFilterState filter;
+  final ValueChanged<EvidenceFilterState> onChanged;
+  final bool includeTypeAll;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          DropdownButton<EvidenceType?>(
+            value: filter.type,
+            hint: const Text('Type'),
+            items: [
+              if (includeTypeAll)
+                const DropdownMenuItem<EvidenceType?>(
+                  value: null,
+                  child: Text('All'),
+                ),
+              ...EvidenceType.values.map(
+                (type) => DropdownMenuItem(
+                  value: type,
+                  child: Text(type.name),
+                ),
+              ),
+            ],
+            onChanged: (value) => onChanged(filter.copyWith(type: value)),
+          ),
+          OutlinedButton.icon(
+            onPressed: () async {
+              final picked = await showDateRangePicker(
+                context: context,
+                firstDate: DateTime(2000),
+                lastDate: DateTime.now().add(const Duration(days: 1)),
+              );
+              if (picked != null) {
+                onChanged(
+                  filter.copyWith(
+                    start: picked.start.toUtc(),
+                    end: picked.end.toUtc(),
+                  ),
+                );
+              }
+            },
+            icon: const Icon(Icons.date_range),
+            label: const Text('Date Range'),
+          ),
+          if (filter.start != null || filter.end != null)
+            Text(
+              '${filter.start?.toLocal().toString().split(' ').first ?? ''} - '
+              '${filter.end?.toLocal().toString().split(' ').first ?? ''}',
+            ),
+          TextButton(
+            onPressed: () => onChanged(EvidenceFilterState()),
+            child: const Text('Clear'),
+          ),
+        ],
+      ),
     );
   }
 }
